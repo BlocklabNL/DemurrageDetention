@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../Frontend/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<title>BlockLab</title>
+</head>
+<script type="text/javascript" src="../node_modules/web3/dist/web3.min.js"></script>
+<script type="text/javascript" src="../node_modules/truffle-contract/dist/truffle-contract.min.js"></script>
+
+<body>
+	<div class="topnav">
+
+		<i class="fa fa-user fa-2x" aria-hidden="true"></i>
+
+		<div class="search-container">
+			<form action="/action_page.php">
+				<input type="text" placeholder="Search.." name="search">
+				<button type="submit">
+					<i class="fa fa-search"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<div class="underline">
+	</div>
+	<div class="w3-container">
+		<ul class="nav nav-tabs">
+			<li class="active">
+				<a href="Shipments.html?orderId=0">
+					Shipments
+				</a>
+			</li>
+			<li class="inactive">
+				<a href="carrierAddShipment.html">
+					Add Shipment - Carrier
+				</a>
+			</li>
+			<li class="inactive">
+				<a href="carrierAddContract.html">Add Contract - Carrier</a>
+			</li>
+			<li class="inactive">
+				<a href="terminal.html">Terminal View</a>
+			</li>
+			<li class="inactive">
+				<a href="client.html">Client View</a>
+			</li>
+			<li class="inactive">
+				<a href="lsp.html">LSP View</a>
+			</li>
+		</ul>
+
+		<table id="containersTable" class="w3-table w3-striped">
+			<!-- 			<tr>
+				<th>Container ID</th>
+				<th>Type</th>
+				<th>Size</th>
+				<th>Pickup Date</th>
+				<th>Return Date</th>
+				<th>Storage Cost</th>
+				<th>Demmurage Fee</th>
+				<th>Detention Fee</th>
+				<th>Total Cost</th>
+				<th>Pickup</th>
+				<th>Return</th>
+			</tr> -->
+			<tbody>
+				<!-- 				<tr>
+					 A ContainerID to be given, to the  
+					<td>TODO</td>
+					<td id=8></td>
+					<td id=9></td>
+					<td>
+						<input type="date" id=12 class="form-control">
+					</td>
+					<td>
+						<input type="date" id=13 class="form-control">
+					</td>
+					<td id=14></td>
+					<td id=15></td>
+					<td id=16></td>
+					<td id=17></td>
+					<td>
+						<a href="#" onclick="setDischarge()" class="btn btn-primary">Set</a>
+					</td>
+				</tr> -->
+			</tbody>
+		</table>
+	</div>
+
+	</div>
+</body>
+<script src="./app.js"></script>
+
+</html>

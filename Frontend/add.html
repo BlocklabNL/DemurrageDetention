@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../Frontend/styles.css">
+	
+	<title>Container Release</title>
+</head>
+	<script type="text/javascript" src="../node_modules/web3/dist/web3.min.js"></script>
+	<script type="text/javascript" src="../node_modules/truffle-contract/dist/truffle-contract.min.js"></script>
+<body>
+	<div class="topnav">
+
+		<i class="fa fa-user fa-2x" aria-hidden="true"></i>
+
+		<div class="search-container">
+			<form action="/action_page.php">
+				<input type="text" placeholder="Search.." name="search">
+				<button type="submit">
+					<i class="fa fa-search"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<div class="underline"></div>
+
+	<div class="w3-container">
+		<ul class="nav nav-tabs">
+			<li class="inactive">
+				<a href="orders.html">All Contracts</a>
+			</li>
+			<li class="add">
+				<a href="#">Add Contract</a>
+			</li>
+			<li class="inactive">
+				<a href="addShipment.html">Add Shipment</a>
+			</li>
+		</ul>
+
+		<div class="container-grey"></div>
+
+		<div class="row">
+			<div class="bgr-1 col-sm-6 ">
+				<form class="form-horizontal" action="/action_page.php">
+					<div class="form-group">
+							<label class="control-label col-sm-3" for="quanity">Contract Number:</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="11" placeholder="Enter Contract Number here">
+							</div>
+						</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="carrier">Carrier:</label>
+							<div class="col-sm-9">
+								<select type="text" id=0 class="form-control">
+									<option value="CMA CGM Group">CMA CGM Group</option>
+									<option value="A.P. Moller–Maersk">A.P. Moller–Maersk</option>
+									<option value="Mediterranean Shipping Company">Mediterranean Shipping Company</option>
+									<option value="China Ocean Shipping Company">China Ocean Shipping Company</option>
+								</select> 
+							</div>
+				  </div>
+				  
+				   <div class="form-group">
+						<label class="control-label col-sm-3" >Client:</label>
+						<div class="col-sm-9">
+							<select type="text" id=1 class="form-control">
+								<option value="Samsung">Samsung</option>
+								<option value="LG">LG</option>
+								<option value="Apple">Apple</option>
+								<option value="Sony">Sony</option>
+								<option value="Dell">Dell</option>
+								<option value="General">General</option>
+							</select>
+						</div>
+					</div>
+<!-- 					<div class="form-group">
+						<label class="control-label col-sm-3" for="quanity">Container quantity:</label>
+						<div class="col-sm-9">
+							<input type="number" class="form-control" id="2" placeholder="Enter container quantity here">
+						</div>
+					</div> -->
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="from">From:</label>
+						<div class="col-sm-9">
+							<select type="text" id=3 class="form-control">
+								<option value="Antwerpen">Antwerpen</option>
+								<option value="Marseille">Marseille</option>
+								<option value="Rotterdam">Rotterdam</option>
+								<option value="Shanghai">Shanghai</option>
+								<option value="Singapore">Singapore</option>
+								<option value="NA">NA</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="to">To:</label>
+						<div class="col-sm-9">
+							<select type="text" id=4 class="form-control">
+								<option value="Antwerpen">Antwerpen</option>
+								<option value="Marseille">Marseille</option>
+								<option value="Rotterdam">Rotterdam</option>
+								<option value="Shanghai">Shanghai</option>
+								<option value="Singapore">Singapore</option>
+								<option value="NA">NA</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="type">Free days demurrage:</label>
+						<div class="col-sm-9">
+							<input type="number" class="form-control" id="5" placeholder="Freedays Demurrage">
+							<!-- This ID will only be used in the back-end
+							The same counts for Freedays Detention -->
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="size">Free days Detention:</label>
+							<div class="col-sm-9">
+								<input type="number" class="form-control" id="6" placeholder="Freedays Detention">
+							</div>
+				  </div>
+				  
+				 <!-- <div class="form-group">
+					<label class="control-label col-sm-3" for="atd">Discharge Day:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="atd" placeholder="Enter discharge day here">
+						</div>
+				  </div> -->
+
+					<!-- <div class="form-group">
+						<label class="control-label col-sm-3" for="eta">Real pick up time:</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="eta" placeholder="Enter real pick up time here">
+							</div>
+				  </div> -->
+
+					<!-- <div class="form-group">
+						<label class="control-label col-sm-3" for="ata">Return Containers:</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="ata" placeholder="Enter return containers here">
+							</div>
+				  </div> -->
+
+					<!-- <div class="form-group">
+						<label class="control-label col-sm-3" for="free">Free days Demmurge:</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="free" placeholder="Enter free days demmurge here">
+							</div>
+				  </div> -->
+
+					<!-- <div class="form-group">
+							<label class="control-label col-sm-3" for="free">Free days Detention:</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" id="free" placeholder="Enter free days detention here">
+							</div>
+					</div>
+				   -->
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<a href="#" onclick="newOrder()" class="btn btn-default">Add Order</a>
+							
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="bgr col-sm-6"></div>
+		</div>
+	</div>
+
+</body>
+<script src="./app.js"></script>
+</html>  

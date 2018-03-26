@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../Frontend/styles.css">
+	<title>BlockLab</title>
+</head>
+<script type="text/javascript" src="../node_modules/web3/dist/web3.min.js"></script>
+<script type="text/javascript" src="../node_modules/truffle-contract/dist/truffle-contract.min.js"></script>
+
+<body>
+
+	<div class="topnav">
+
+		<i class="fa fa-user fa-2x" aria-hidden="true"></i>
+
+		<div class="search-container">
+			<form action="/action_page.php">
+				<input type="text" placeholder="Search.." name="search">
+				<button type="submit">
+					<i class="fa fa-search"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<div class="underline">
+	</div>
+
+	<div class="w3-container">
+		<ul class="nav nav-tabs">
+			<li class="inactive">
+				<a href="Shipments.html">
+					Shipments
+				</a>
+			</li>
+			<li class="inactive">
+				<a href="carrierAddShipment.html">
+					Add Shipment - Carrier
+				</a>
+			</li>
+			<li class="inactive">
+				<a href="carrierAddContract.html">Add Contract - Carrier</a>
+			</li>
+			<li class="inactive">
+				<a href="terminal.html">Terminal View</a>
+			</li>
+			<li class="inactive">
+				<a href="client.html">Client View</a>
+			</li>
+			<li class="active">
+				<a href="lsp.html">LSP View</a>
+			</li>
+		</ul>
+
+		<table id="shipmentsTable" class="w3-table w3-striped">
+        
+            <!-- 
+                -ShipID, Client, Forwarder(himself), Discharge Date, Quantity,
+                Pickup Date and set pickupdate, return date and set return date. 
+             -->
+
+		</table>
+
+</body>
+<script src="./app.js">
+	defer
+</script>
+
+</html>

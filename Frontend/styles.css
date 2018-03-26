@@ -1,0 +1,397 @@
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial;
+  background-color: #ECEDED;
+}
+ 
+/* Navigatie */
+
+.fa-search {
+	font-size: 14px;
+}
+
+.fa-user {
+	color: white;
+	float: right;
+	margin-top: 8px;
+	margin-right: 70px;
+	font-size: 27px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #424141;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav .search-container {
+  float: right;
+  vertical-align: middle;
+}
+
+.topnav input[type=text]{
+  padding: 6px;
+  padding-left: 20px;
+  margin-top: 8px;
+  font-size: 10px;
+  border: none;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: 10px;
+  background: #fff;
+  font-size: 3px;
+  border: none;
+  cursor: pointer;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.topnav .search-container button:hover {
+  background: #E31937;
+}
+
+.underline {
+	background: #E31937; /* For browsers that do not support gradients */
+  	background: -webkit-linear-gradient(left, white ,#E31937); /* For Safari 5.1 to 6.0 */
+  	background: -o-linear-gradient(right, white ,#E31937); /* For Opera 11.1 to 12.0 */
+  	background: -moz-linear-gradient(right,  white ,#E31937); /* For Firefox 3.6 to 15 */
+  	background: linear-gradient(to right, white ,#E31937); /* Standard syntax */
+	height: 5px;
+}
+
+/* tabs */
+
+.nav-tabs>li.active>a {
+	background-color: #E31937; 
+	color: #fff;
+	padding-left: 50px;
+	padding-right: 50px;
+	border-radius: 10px 10px 0 0;
+	margin: 0px; /* All orders margin */
+	border: 0px;
+	font-weight: bold;
+	z-index: 1;
+	box-shadow: 3px 0px 5px grey;
+}
+
+.nav-tabs>li.add>a {
+	background-color: #E31937; 
+	color: #fff;
+	padding-left: 50px;
+	padding-right: 50px;
+	border-radius: 10px 10px 0 0;
+	margin-left: -20px; /* Add orders margin */
+	border: 0px;
+	font-weight: bold;
+	z-index: 1;
+	box-shadow: 3px 0px 5px grey;
+}
+
+.nav-tabs>li.inactive>a {
+	background-color: #C6C6C6; 
+	position:relative;
+	color: #fff;
+	padding-left: 50px;
+	padding-right: 50px;
+	margin: 0px;
+	border: 0px;
+}
+
+.nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus, .nav-tabs>li.add>a:hover  {
+	color: #fff;
+    cursor: pointer;
+    background-color: #E31937; 
+    border: 0px;
+    border-bottom-color: transparent;
+}
+
+.nav-tabs>li>a {
+	position: relative;
+	background-color: #C6C6C6; 
+	color: #fff;
+	border-radius: 10px 10px 0 0;
+	margin-left: -20px;
+	border: 0px;
+	width: 280px;
+    height: 45px;
+	font-size: 16px;
+	text-align: center;
+	padding: 12px 15px;
+}
+
+
+.nav-tabs>li>a:hover {
+	color: #fff;
+    cursor: pointer;
+    background-color: #a9a6a6; 
+    border: 0px;
+    border-bottom-color: transparent;
+}
+
+.fa-chevron-left {
+	position: absolute;
+    left: 8px;
+	top: 15px;
+	cursor: pointer;
+
+}
+
+/* container with information for All Orders - shipment - containers */
+
+.w3-container {
+float:center;
+margin-top: 40px;
+margin-right: 54px;
+margin-left: 54px;
+
+
+}
+.row {
+	margin-right: auto;
+	margin-left: auto;
+	display: flex; /* equal height of the children */
+}
+
+.col {
+  flex: 1; /* additionally, equal width */
+  padding: 1em;
+  border: solid;
+}
+
+th {
+	background-color: #424141;
+	color: white;
+}
+
+table {
+	background: white;
+	table-layout: fixed;
+}
+
+
+.w3-table td, .w3-table th {
+	vertical-align: middle;
+	height: 60px;
+	
+}
+
+.w3-table>tbody>tr>td>a, .w3-table>tbody>tr>td>a:visited {
+	color: #333;
+	text-decoration: none;
+}
+
+.w3-table>tbody>tr>td>a:hover {
+	color: #E31937;
+	font-weight: bold;
+}
+
+.fa-info-circle {
+	color: #F7BD00;
+	padding-left: 10px;
+	cursor: pointer;
+}
+
+.w3-table th:last-child, .w3-table td:last-child, .w3-table-all th:last-child, .w3-table-all td:last-child {
+    padding-right: 0px;
+}
+/* squares */
+
+th.square {
+	word-spacing: 12px;
+	text-align: left;
+}
+
+.square-green {
+	background-color: #00FF00;
+	color: white;
+    width: 30px;
+	height: 30px;
+	padding-top: 8px;
+	margin-right: 3px;
+	float: left;
+	font-size: 11px;
+	text-align:center;
+
+}
+
+.square-orange {
+	background-color: #F7931E;
+	color: white;
+    width: 30px;
+	height: 30px;
+	padding-top: 8px;
+	margin-right: 3px;
+	float: left;
+	font-size: 11px;
+	text-align:center;
+}	
+
+.square-red {
+	background-color: #FF0000;
+	color: white;
+    width: 30px;
+	height: 30px;
+	padding-top: 8px;
+	margin-right: 3px;
+	float: left;
+	font-size: 11px;
+	text-align:center;
+}
+
+
+/* MODAL */
+
+.modal-open {
+	padding-right: 0px !important;
+}
+
+.modal-header {
+	 border-bottom: 0px solid #e5e5e5;
+    background-color: #424141;
+    color: #fff;
+}
+
+button.close {    
+    font-size: 35px;
+    font-weight: 100;
+    color: #FF0202;
+    text-shadow: 0 0px 0 #FF0202; 
+    filter: alpha(opacity=20);
+    opacity: 100;
+}
+
+button.close:hover {    
+    font-size: 35px;
+    font-weight: 100;
+    color: #FFF;
+    text-shadow: 0 0px 0 #FF0202; 
+    filter: alpha(opacity=20);
+    opacity: 100;
+}
+
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* ADD */
+
+.container-grey {
+	background: #424141; 
+	height: 35px;	
+}
+
+.bgr-1 {
+	background-color: #DDDDDD;
+	height: 100%;
+}
+
+.bgr {
+	background-color: #E31937;
+	color: #5E5A5A;
+	padding: 34px;
+	height: inherit;
+}
+
+.form-horizontal{
+	margin: 30px;
+	font-size: 12px;
+}
+
+.form-control {
+	height: 42px;
+	border-radius: 10px;
+}
+
+.control-label {
+	vertical-align: middle;
+	margin-top: 5px;
+}
+
+.btn-default{
+	float: right;
+	background-color: #E31937;
+	color: #fff;
+	padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+	box-shadow: 0px 1px 0px 0px #333;
+	text-align: center;
+}
+
+.btn-default:hover {
+	background-color: #b9152d;
+	color: #fff;
+	}
+
+	
+
+/*@media*/
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+  
+  
+  .square-green {
+	width: 20px;
+	height: 20px;
+	left: 40px;
+    position: relative;
+}
+
+.square-orange {
+	width: 20px;
+	height: 20px;
+	left: 40px;
+    position: relative;
+}
+
+.square-red {
+    width: 20px;
+	height: 20px;
+	left: 40px;
+    position: relative;
+}
+}

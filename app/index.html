@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../Frontend/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<title>BlockLab</title>
+</head>
+  <script type="text/javascript" src="../node_modules/web3/dist/web3.min.js"></script>
+  <script type="text/javascript" src="../node_modules/truffle-contract/dist/truffle-contract.min.js"></script>
+<body>
+	<div class="topnav">
+
+		<i class="fa fa-user fa-2x" aria-hidden="true"></i>
+
+		<div class="search-container">
+			<form action="/action_page.php">
+				<input type="text" placeholder="Search.." name="search">
+				<button type="submit">
+					<i class="fa fa-search"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<div class="underline">
+	</div>
+
+	<div class="w3-container">
+		<ul class="nav nav-tabs">
+			<li class="active">
+				<a href="#">All Orders</a>
+			</li>
+			<li>
+				<a href="add.html">Add Order</a>
+			</li>
+			<li class="inactive">
+				<a href="addShipment.html">Add Shipment</a>
+			</li>
+		</ul>
+
+		<table class="w3-table w3-striped">
+			<tr>
+				<th>Order ID</th>
+				<!-- OrderId -->
+				<th>Carrier</th>
+				<!-- Id=0 -->
+				<th>Forwarder</th>
+				<!-- Id=1 -->
+				<th>Container Quantity</th>
+				<!-- Id=2 -->
+				<th>From</th>
+				<!-- Id=3 -->
+				<th>To</th>
+				<!-- Id=4 -->
+				<th>Fee</th>
+				<!--TODO: Total Fee ID unknown -->
+				<th class="square">Releases:</br> C CD CR TU</th>
+				<th>Set terms</th>
+			</tr>
+			<tr>
+				<td>
+					<a href="shipments.html" type="number" id=orderId>AB231 </a>
+				</td>
+				<!-- The OrderId hardcode can be deleted when the ID is available from the BC -->
+				<td id=0></td>
+				<td id=1></td>
+				<td id=2>
+					<i class="fa fa-info-circle" data-toggle="modal" data-target="#myModal"></i>
+				</td>
+				<td id=3></td>
+				<td id=4></td>
+				<td id=5>
+					<i class="fa fa-info-circle" aria-hidden="true"></i>
+				</td>
+				<td id=6>
+					<div class="square-green">100%</div>
+					<div class="square-green">100%</div>
+					<div class="square-green">100%</div>
+					<div class="square-orange">75%</div>
+				</td>
+				<td id=7>More Information
+					<i class="fa fa-info-circle" aria-hidden="true"></i>
+				</td>
+			</tr>
+			<tr>
+				<td>AB231</td>
+				<td>CMH-CGM</td>
+				<td>Ritra</td>
+				<td>54
+					<i class="fa fa-info-circle" aria-hidden="true"></ i>
+				</td>
+				<td>Hongkong</td>
+				<td>Rotterdam</td>
+				<td>90
+					<i class="fa fa-info-circle" aria-hidden="true"></i>
+				</td>
+				<td>
+					<div class="square-green">100%</div>
+					<div class="square-green">100%</div>
+					<div class="square-green">100%</div>
+					<div class="square-green">100%</div>
+				</td>
+				<td>More Information
+					<i class="fa fa-info-circle" aria-hidden="true"></i>
+				</td>
+			</tr>
+		</table>
+
+
+		<!-- Modal -->
+		<div id="myModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">ORDER ID:</h4>
+					</div>
+					<div class="underline">
+					</div>
+
+					<div class="modal-body">
+						<p>Some text in the modal.</br>
+							Some text in the modal.</br>
+							Some text in the modal.</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>MetaCoin - Truffle Webpack Demo w/ Frontend</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <script src="./app.js"></script>
+</head>
+<body>
+  <h1>MetaCoin</h1>
+  <h2>Example Truffle Dapp</h2>
+  <h3>You have <span class="black"><span id="balance"></span> META</span></h3>
+
+  <br>
+  <h1>Send MetaCoin</h1>
+  <br><label for="amount">Amount:</label><input type="text" id="amount" placeholder="e.g., 95"></input>
+  <br><label for="receiver">To Address:</label><input type="text" id="receiver" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+  <br><br><button id="send" onclick="App.sendCoin()">Send MetaCoin</button>
+  <br><br>
+  <span id="status"></span>
+  <br>
+  <span class="hint"><strong>Hint:</strong> open the browser developer console to view any errors and warnings.</span>
+</body>
+</html>
+ -->
+
