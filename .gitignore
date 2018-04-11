@@ -58,3 +58,6 @@ typings/
 # dotenv environment variables file
 .env
 
+# don't show private network ip
+truffle.js
+truffle-config.js

@@ -4,7 +4,7 @@ contract Shipments {
     enum shipmentStatus {pending, atPort,commerciallyReleased, pickedUp, deliverd}
     enum containerType {GP,RF}
     enum containerSize {twenty, fourty}
-    
+
     address[16] public shippingAgents; //what is address[16]
 
     struct order {
@@ -12,32 +12,32 @@ contract Shipments {
         address shippingAgents;
         bytes32 carrier;
         bytes32 client;
-        uint freeDaysDemmurage; //free days to pickup 
+        uint freeDaysDemmurage; //free days to pickup
         uint demmurageFees; //per day
         uint freeDaysDetention; //free days to return.
         uint detentionFees; // per day
         uint storageCost; // totals
         uint finalAmount;
-        bytes32 from; 
-        bytes32 to;  
+        bytes32 from;
+        bytes32 to;
         //uint numOfContainers;
         orderStatus status;
-        
+
 
         //  requirerequire(orderId >= 0 && orderId <= 15); Amr: why?
     }
     struct shipment {
-        //bytes32 shipmentNr;  
+        //bytes32 shipmentNr;
         //bytes32 client;
         uint orderId;
         bytes32  forwarder;
-        bytes32  from; 
+        bytes32  from;
         bytes32 to;
-        //uint creationDate; 
-        //shipmentStatus status; 
+        //uint creationDate;
+        //shipmentStatus status;
         uint8 numOfContainers; // important for forwarder and also to calculate D&D in case of pickup after free days
-        //uint ata; // actual time of arrival 
-        uint dischargeDate; // discharge date of last container 
+        //uint ata; // actual time of arrival
+        uint dischargeDate; // discharge date of last container
         int totalDemmurageFees;
         int totalDetentionFees;
         uint totalStorageCost;
@@ -46,69 +46,69 @@ contract Shipments {
     }
 
     struct container {
-        uint shipmentId; 
+        uint shipmentId;
         //bytes32 containerNr;
         bytes32 cType;
         bytes32 cSize;
         uint dischargeDate;
         // uint8 freeDaysDem; //free days to pickup after discharge. is it on container level or shipment level?
         // uint8 freeDaysDet; //free days to return. is it on container level or shipment level?
-        int totalDemmurageFees; 
-        int totalDetentionFees; 
+        int totalDemmurageFees;
+        int totalDetentionFees;
         uint storageFees; // fees per day. is it on container level or shipment level? I think it differs based on size and type, so it should be container level
-        uint totalStorageCost; 
+        uint totalStorageCost;
         uint pickupDate;
         uint returnDate;
         int totalCost;
 
     }
 
-    
-    
+
+
     order[] public orders;
-    shipment[] public shipments; // to add new shipments. 
+    shipment[] public shipments; // to add new shipments.
     container[] public containers; // to add all containers related to each shipment by shipment ID.
 /*     mapping(address => uint[]) public ordersAddedByShippingAgent; // Pouinter to shipments indexes for shipments added by each shipping agent.
-    mapping(address => uint[]) public ordersAssignedToForwarder; // Pouinter to shipments indexes for shipments assgined to a freight forwarder. 
+    mapping(address => uint[]) public ordersAssignedToForwarder; // Pouinter to shipments indexes for shipments assgined to a freight forwarder.
     mapping(address => uint[]) public shipmentsAddedByShippingAgent; // Pouinter to shipments indexes for shipments added by each shipping agent.
     mapping(address => uint[]) public shipmentsAssignedToForwarder; // Pouinter to shipments indexes for shipments assgined to a freight forwarder.
+*/
 
 
 
 
-
-    function addOrder (bytes32 orderNr, bytes32 carrier, bytes32 client, bytes32 from, bytes32 to,   uint freeDaysDemmurage, uint freeDaysDetention) public returns(uint orderId) { 
+    function addOrder (bytes32 orderNr, bytes32 carrier, bytes32 client, bytes32 from, bytes32 to,   uint freeDaysDemmurage, uint freeDaysDetention) public returns(uint orderId) {
         orderId = orders.length++;
         order storage o = orders[orderId];
         o.orderNr = orderNr;
         o.shippingAgents = msg.sender;
         o.carrier = carrier;
-        o.client = client; 
+        o.client = client;
         o.status = orderStatus.working;
         o.from = from;
-        o.to = to; 
-        //o.numOfContainers = numOfContainers; 
+        o.to = to;
+        //o.numOfContainers = numOfContainers;
         o.freeDaysDemmurage = freeDaysDemmurage;
         o.freeDaysDetention = freeDaysDetention;
 
         o.demmurageFees = 5;  // later on it should come from the order details
         o.detentionFees = 5;   // later on it should come from the order details
-        
+
         //ordersAddedByShippingAgent[o.shippingAgents].push(orderId);
         //ordersAssignedToForwarder[o.forwarder].push(orderId);
-        o.storageCost = 4; 
+        o.storageCost = 4;
         o.finalAmount = 0;
 
-        //require(orderId >= 0 && orderId <= 30); 
+        //require(orderId >= 0 && orderId <= 30);
         //shippingAgents[orderId] = msg.sender;
         return orderId;
     }
 
-  
-    function addShipment ( uint orderId,   
-    uint8 numOfContainers,  bytes32 from, bytes32 to, bytes32 cType, bytes32 cSize,bytes32 forwarder) public returns(uint shipmentId) 
-    {  
-        
+
+    function addShipment ( uint orderId,
+    uint8 numOfContainers,  bytes32 from, bytes32 to, bytes32 cType, bytes32 cSize,bytes32 forwarder) public returns(uint shipmentId)
+    {
+
         shipmentId = shipments.length++;
         shipment storage s = shipments[shipmentId];
         s.orderId = orderId;
@@ -131,7 +131,7 @@ contract Shipments {
         //shipmentsAssignedToForwarder[o.forwarder].push(shipmentId);
 
         //NewShipmentAdded(shipmentId, o.shippingAgents, o.forwarder);
-        
+
         for (int16 i = 0; i < numOfContainers; i++) {
             addContainer(shipmentId,  cType, cSize);
         }
@@ -141,7 +141,7 @@ contract Shipments {
 
 /*     function setFromTo(uint shipmentId, bytes32 from, bytes32 to) {
         shipment storage s = shipments[shipmentId];
-        s.from = from; 
+        s.from = from;
         s.to = to;
      } */
 
@@ -158,7 +158,7 @@ contract Shipments {
         c.cType = cType;
         c.cSize = cSize;
 
-        c.storageFees = 4; // per day, later on it should come from the order details based on container type and size 
+        c.storageFees = 4; // per day, later on it should come from the order details based on container type and size
         c.totalCost = 0;
         c.totalDemmurageFees = 0;
         c.totalDetentionFees = 0;
@@ -174,18 +174,18 @@ contract Shipments {
     }
 
   /*   function getAllOrders() public constant returns(order[]) {
-        return  orders; //[listSize]; //loop? or we can find a better way? 
+        return  orders; //[listSize]; //loop? or we can find a better way?
     } */
- 
+
     function getOrder(uint orderId) returns(string, string, string,string, string, uint) {
         order storage o = orders[orderId];
         string memory orderNr = bytes32ToString(o.orderNr);
         string memory carrier = bytes32ToString(o.carrier);
         string memory client = bytes32ToString(o.client);
         string memory from = bytes32ToString(o.from);
-        string memory to = bytes32ToString(o.to); 
+        string memory to = bytes32ToString(o.to);
         return(orderNr, carrier, client, from, to, o.finalAmount);
-        
+
     }
     function getClients(uint orderId) returns(string) {
         order storage o = orders[orderId];
@@ -198,7 +198,7 @@ contract Shipments {
         shipment storage s = shipments[shipmentId];
         order storage o = orders[s.orderId];
         return(o.freeDaysDemmurage, o.freeDaysDetention, o.demmurageFees, o.detentionFees, o.storageCost);
-    }    
+    }
 
     function getShipment(uint shipmentId) returns(uint, string, string, uint8, uint, int, int, uint, uint) {
         shipment storage s = shipments[shipmentId];
@@ -206,7 +206,7 @@ contract Shipments {
 
         //string memory shipmentNr = bytes32ToString(s.shipmentNr);
         string memory client = bytes32ToString(o.client);
-        
+
         string memory from = bytes32ToString(s.from);
         //string memory to = bytes32ToString(s.to);
         return (shipmentId, client, from,  s.numOfContainers, s.dischargeDate, s.totalDemmurageFees, s.totalDetentionFees,s.totalStorageCost, s.finalAmount);
@@ -216,9 +216,9 @@ contract Shipments {
         shipment storage s = shipments[shipmentId];
         string memory forwarder = bytes32ToString(s.forwarder);
         return(forwarder);
-  
+
     }
-    
+
     function getShipmentsCount()returns(uint count) {
         count = shipments.length; // all shipments from all orders! ac ondition on orderID should be added later
         return count;
@@ -235,7 +235,7 @@ contract Shipments {
     }
 
     function getContainer(uint containerId) returns(uint, string, string, uint, uint, int, int, uint, int) {
-   
+
          container storage c = containers[containerId];
          //string memory orderNr = bytes32ToString(o.orderNr);
          string memory cType = bytes32ToString(c.cType);
@@ -251,7 +251,7 @@ contract Shipments {
 
     } */
 
-    // function geAlltContainers() 
+    // function geAlltContainers()
 
 
     function getShipmentFinalAmount(uint shipmentId) returns(int) {
@@ -282,14 +282,14 @@ contract Shipments {
 
     function setDischargeDate(uint shipmentId, uint dischargeDate) {
         shipment storage s = shipments[shipmentId];
-         s.dischargeDate = now + dischargeDate * 1 days; //this will update the discharge date of the shipment with each container, the final one will be the discharge date of last container, not optimal! 
-       
+         s.dischargeDate = now + dischargeDate * 1 days; //this will update the discharge date of the shipment with each container, the final one will be the discharge date of last container, not optimal!
+
 
 
     }
 
 
-    
+
     // only forwarder should be able to set pickup date
     // after pickup, fees should be transfered from forwarder to shipping agent
     // whenever pickup date is updated this shipment should be inactive and no one can update any field!
@@ -302,7 +302,7 @@ contract Shipments {
         shipment storage s = shipments[c.shipmentId];
         uint orderId = s.orderId;
 
-        c.pickupDate = now + pickupDate * 1 days; // we should pass 0 if on the same day, -1 if in the previous day for example, future dates shouldn't be accepted? 
+        c.pickupDate = now + pickupDate * 1 days; // we should pass 0 if on the same day, -1 if in the previous day for example, future dates shouldn't be accepted?
         calculateDemmurageFees(orderId, c.shipmentId, containerId);
         calculateStorageFees(c.shipmentId, containerId);
 
@@ -317,7 +317,7 @@ contract Shipments {
     }
 
     function calculateDemmurageFees(uint orderId, uint shipmentId, uint containerId) {
-        
+
         shipment storage s = shipments[shipmentId];
         //uint orderId = s.orderId;
         order storage o = orders[orderId];
@@ -334,26 +334,26 @@ contract Shipments {
     }
 
     function calculateStorageFees( uint shipmentId, uint containerId) {
-        //order storage o = orders[orderId]; // storage cost based on order level or container (type) level? 
+        //order storage o = orders[orderId]; // storage cost based on order level or container (type) level?
         shipment storage s = shipments[shipmentId];
         container storage c = containers[containerId];
-        c.totalStorageCost = uint((c.pickupDate - s.dischargeDate)/86400) * c.storageFees; 
+        c.totalStorageCost = uint((c.pickupDate - s.dischargeDate)/86400) * c.storageFees;
         c.totalCost += int(c.totalStorageCost);
         s.totalStorageCost += c.totalStorageCost;
         //setContainerTotalCost(containerId);
 
     }
 
-    
+
     function setReturnDate( uint shipmentId, uint containerId, uint returnDate) {
 
         // only FF can set return date, to be done
-       
+
         //shipment storage o = shipments[shipmentId];
         container storage c = containers[containerId];
         shipment storage s = shipments[shipmentId];
         uint orderId = s.orderId;
-        c.returnDate = now + returnDate * 1 days; // we should pass 0 if on the same day, -1 if in the previous day for example, future dates shouldn't be accepted? 
+        c.returnDate = now + returnDate * 1 days; // we should pass 0 if on the same day, -1 if in the previous day for example, future dates shouldn't be accepted?
         calculateDetentionFees(orderId, shipmentId, containerId);
         //calculateAmount(shipmentId);
         //ShipmentPReleased(shipmentId);
@@ -361,19 +361,19 @@ contract Shipments {
 
     }
 
-    
+
 
     function calculateDetentionFees(uint orderId, uint shipmentId, uint containerId) {
         order storage o = orders[orderId];
         shipment storage s = shipments[shipmentId];
         container storage c = containers[containerId];
-        c.totalDetentionFees = ((int(c.returnDate - c.pickupDate)/86400) - int(o.freeDaysDetention)) * int(o.detentionFees); 
+        c.totalDetentionFees = ((int(c.returnDate - c.pickupDate)/86400) - int(o.freeDaysDetention)) * int(o.detentionFees);
         if (c.totalDetentionFees < 0) {
             c.totalDetentionFees = 0;
         }
         c.totalCost += c.totalDetentionFees;
         s.totalDetentionFees += c.totalDetentionFees;
-        s.finalAmount += uint(c.totalCost); 
+        s.finalAmount += uint(c.totalCost);
         o.finalAmount += uint(c.totalCost);
         //setContainerTotalCost(containerId);
     }
